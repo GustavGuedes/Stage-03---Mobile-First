@@ -1,6 +1,6 @@
 /* font-family: 'Palanquin', sans-serif;
-font-family: 'Staatliches', cursive; */
-
+font-family: 'Staatliches', cursive;
+font-family: 'Open Sans', sans-serif; */
 * {
   margin: 0;
   padding: 0;
@@ -12,6 +12,7 @@ font-family: 'Staatliches', cursive; */
 
   --ff-heading: "Staatliches", cursive;
   --ff-texting: "Palanquin", sans-serif;
+  --ff-footer:  "Open Sans", sans-serif;
 
   --bg-primary: #eff1ff;
   --fc-primary: #ffffff;
@@ -29,12 +30,9 @@ body {
   font-family: var(--ff-texting);
   background-color: var(--bg-primary);
   font-size: var(--fs-body);
+  /* height: 100%; */
 }
 
-/* img {
-  width: 100%;
-  height: auto;
-} */
 
 h1,
 span {
@@ -55,7 +53,11 @@ header {
   place-items: center;
 }
 
-#logo {
+#logo-mobile {
+  padding: 3.2rem 0;
+}
+
+#logo-desktop {
   padding: 3.2rem 0;
 }
 
@@ -74,11 +76,7 @@ main {
   text-align: center;
 }
 
-.continer {
-  /* max-width: 32rem;  */
-  display: grid;
-  align-content: center;
-}
+
 .text {
   font-family: "Palanquin", sans-serif;
   text-align: center;
@@ -90,7 +88,7 @@ main {
   color: var(--fc-secondary);
 }
 
-.card {
+.cards {
   display: grid;
   gap: 3.2rem;
   margin-top: 5rem;
@@ -99,6 +97,17 @@ main {
 .cards .card {
   position: relative;
   height: fit-content;
+  overflow: hidden;
+  border-radius: 2rem;
+}
+
+.card img {
+  transition: all 300ms;
+}
+
+.card img:hover {
+  transform: scale(1.3);
+  cursor: pointer;
 }
 
 .cards .card span {
@@ -139,7 +148,7 @@ main {
 
 .name {
   animation: topdown 1500ms 100ms backwards;
-  animation-fill-mode: ;
+  /* animation-fill-mode: ; */
 }
 
 @keyframes topdown {
@@ -152,4 +161,148 @@ main {
     opacity: 1;
     transform: rotateX(50px);
   }
+}
+
+@media (max-width: 900px){
+  .intro-desktop {
+    display: none;
+  }
+  #logo-desktop {
+    display: none;
+  }
+
+  footer {
+    /* display: none; */
+  }
+}
+
+@media (min-width: 900px) {
+  .container {
+    display: flex;
+  }
+  
+  
+  header {
+    width: 37.7rem;
+    height: 100vh;
+    position: fixed;
+    display: flex;
+    flex-direction: column;
+  }
+  
+  #logo-mobile {
+    display: none;
+  }
+  .text {
+    display: none;
+  }
+  
+  .name {
+    display: none;
+  }
+
+  footer {
+    padding: 1.8rem 3.2rem 6rem;
+    margin-left: 37.7rem;
+  }
+  
+  footer p {
+    font-size: 1.4rem;
+    font-family: var(--ff-footer);
+    font-weight: 400;
+    color: #4a4e69;
+    text-align: center;
+  }
+  
+  footer p a {
+    font-weight: 700;
+    text-decoration: none;
+    color: #4a4e69;
+  }
+
+ .intro-desktop {
+  color: var(--fc-primary);
+  font-size: 1.8rem;
+  line-height: 1.5;
+  width: 28rem;
+  text-align: center;
+ }
+
+  .cards {
+    margin-left: 37.7rem;
+    grid-template-areas: 
+    'A B'
+    'C B'
+    'C D'
+    'E F';
+  }
+
+  .cards .card:nth-child(1) {
+    grid-area: A;
+  }
+
+  
+  .cards .card:nth-child(2) {
+    grid-area: B;
+  }
+
+  
+  .cards .card:nth-child(3) {
+    grid-area: D;
+  }
+
+  
+  .cards .card:nth-child(4) {
+    grid-area: C;
+  }
+
+  .cards .card:nth-child(5) {
+    grid-area: E;
+  }
+  
+  .cards .card:nth-child(6) {
+    grid-area: F;
+  }
+
+
+
+}
+
+@media (min-width: 1440px) {
+  .cards {
+    grid-template-areas: 
+    'A B C'
+    'D B E'
+    'D F E';
+  }
+
+  .cards .card:nth-child(1) {
+    grid-area: A;
+  }
+
+  
+  .cards .card:nth-child(2) {
+    grid-area: B;
+  }
+
+  
+  .cards .card:nth-child(3) {
+    grid-area: C;
+  }
+
+  
+  .cards .card:nth-child(4) {
+    grid-area: D;
+  }
+
+  .cards .card:nth-child(5) {
+    grid-area: F;
+  }
+  
+  .cards .card:nth-child(6) {
+    grid-area: E;
+  }
+
+  
+
 }
